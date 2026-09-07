@@ -5,6 +5,23 @@ import { ChevronDownIcon } from "lucide-react";
 
 import { cn } from "./utils";
 
+import { Link } from "react-router-dom";
+
+export default function Navbar() {
+  return (
+    <nav className="navbar">
+      <Link to="/" className="logo">NTUmmy</Link>
+
+      <div className="nav-links">
+        {/* Navigates instantly to /discover */}
+        <Link to="/discover" className="btn-discover">
+          Discover
+        </Link>
+      </div>
+    </nav>
+  );
+}
+
 function NavigationMenu({
   className,
   children,
