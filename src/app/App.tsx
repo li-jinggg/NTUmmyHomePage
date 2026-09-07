@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TestPage from "./TestPage";
 
 import {
   Search,
@@ -16,6 +17,7 @@ import {
   Menu,
   X,
   ThumbsUp,
+  FlaskConical,
 } from "lucide-react";
 
 const DISPLAY_FONT = "'Fraunces', serif";
@@ -134,15 +136,6 @@ const SUGGESTED_QUESTIONS = [
   "What's open after 8pm?",
 ];
 
-const CANTEENS = [
-  { name: "North Spine Food Court", stalls: 18, distance: "5 min walk" },
-  { name: "South Spine Food Court", stalls: 14, distance: "8 min walk" },
-  { name: "The Hive", stalls: 10, distance: "3 min walk" },
-  { name: "Pioneer Canteen", stalls: 22, distance: "12 min walk" },
-  { name: "Foodgle Hub", stalls: 16, distance: "7 min walk" },
-  { name: "The Quad", stalls: 8, distance: "6 min walk" },
-];
-
 function StarRow({ rating, size = "sm" }: { rating: number; size?: "sm" | "md" }) {
   return (
     <div className="flex items-center gap-0.5">
@@ -161,6 +154,7 @@ function StarRow({ rating, size = "sm" }: { rating: number; size?: "sm" | "md" }
 }
 
 export default function App() {
+  const [showTestPage, setShowTestPage] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [chatMessages, setChatMessages] = useState<
@@ -189,11 +183,33 @@ export default function App() {
     }, 1100);
   }
 
+  if (showTestPage) {
+    return (
+      <div className="relative min-h-screen">
+        <button
+          onClick={() => setShowTestPage(false)}
+          className="fixed top-4 right-4 z-[9999] px-4 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg hover:bg-red-700 transition-colors flex items-center gap-2 text-xs"
+        >
+          <X className="w-4 h-4" /> Close Test Page
+        </button>
+        <TestPage />
+      </div>
+    );
+  }
+
   return (
     <div
       className="min-h-screen bg-background text-foreground overflow-x-hidden"
       style={{ fontFamily: BODY_FONT }}
     >
+      {/* Test Page Toggle Button */}
+      <button
+        onClick={() => setShowTestPage(true)}
+        className="fixed bottom-6 left-6 z-[9999] px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-full shadow-xl transition-all flex items-center gap-2 text-xs"
+      >
+        <FlaskConical className="w-4 h-4" /> Test Page
+      </button>
+
       {/* ── NAV ──────────────────────────────────────── */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -622,9 +638,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── FEATURES ─────────────────────────────────── */}
-      
-
       {/* ── TRENDING STALLS ───────────────────────────── */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
@@ -894,9 +907,6 @@ export default function App() {
           {!chatOpen && "Ask Foodie"}
         </button>
       </div>
-
-      {/* ── CTA BANNER ───────────────────────────────── */}
-      
 
       {/* ── FOOTER ───────────────────────────────────── */}
       <footer className="border-t border-border py-10">
