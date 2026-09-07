@@ -9,15 +9,20 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="navbar">
-      <Link to="/" className="logo">NTUmmy</Link>
+    <nav className="flex items-center justify-between p-4 navbar">
+      <Link to="/" className="text-xl font-bold logo">
+        NTUmmy
+      </Link>
 
-      <div className="nav-links">
-        {/* Navigates instantly to /discover */}
-        <Link to="/discover" className="btn-discover">
-          Discover
-        </Link>
-      </div>
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+              <Link to="/discover">Discover</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
     </nav>
   );
 }
