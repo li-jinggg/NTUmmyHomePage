@@ -1,19 +1,13 @@
 import React from 'react'
-import ReactDOM from 'react-[#1B2D4F]-dom/client'
+import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import TestPage from './TestPage.jsx'
+import TestPage from './TestPage.jsx' // Adjust extension (.tsx/.jsx) if needed
 import './index.css'
 
-const isTestRoute = window.location.pathname === '/test';
+const pathname = window.location.pathname;
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    {isTestRoute ? <TestPage /> : <App />}
+    {pathname === '/test' ? <TestPage /> : <App />}
   </React.StrictMode>,
 )
-  createRoot(document.getElementById("root")!).render(
-    <BrowserRouter> {/* 2. Wrap App inside BrowserRouter */}
-    <App />
-  </BrowserRouter>
-);
-  
