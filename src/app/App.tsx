@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./navigation-menu"; // or your navbar path
+import Navbar from "./navigation-menu"; 
 import Home from "../pages/Home"; // Home page
 import Discover from "../pages/Discover"; // Discover page
 
@@ -18,6 +18,7 @@ export default function App() {
       {/* Catch-all fallback if route is missing */}
       <Route path="*" element={<Home />} />
     </Routes>
+    </BrowserRouter>
   );
 }
 import {
