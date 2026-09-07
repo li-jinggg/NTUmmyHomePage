@@ -1,26 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./navigation-menu"; 
-import Home from "../pages/Home"; // Home page
-import Discover from "../pages/Discover"; // Discover page
 
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-      {/* Home Page at http://localhost:5173/ */}
-      <Route path="/" element={<Home />} />
-
-      {/* Discover Page at http://localhost:5173/discover */}
-      <Route path="/discover" element={<Discover />} />
-
-      {/* Catch-all fallback if route is missing */}
-      <Route path="*" element={<Home />} />
-    </Routes>
-    </BrowserRouter>
-  );
-}
 import {
   Search,
   Star,
