@@ -4,7 +4,6 @@ import { cva } from "class-variance-authority";
 import { ChevronDownIcon } from "lucide-react";
 
 import { cn } from "./utils";
-
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
@@ -17,9 +16,9 @@ export default function Navbar() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link to="/discover">Discover</Link>
-            </NavigationMenuLink>
+            <Link to="/discover" className={navigationMenuTriggerStyle()}>
+              Discover
+            </Link>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
