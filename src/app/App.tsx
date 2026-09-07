@@ -1,16 +1,22 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import HomePage from "../pages/HomePage"; // Your main home page
-import Discover from "../pages/Discover"; // Your group mate's Discover page
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./navigation-menu"; // or your navbar path
+import Home from "../pages/Home"; // Home page
+import Discover from "../pages/Discover"; // Discover page
 
 export default function App() {
   return (
-    <Routes>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
       {/* Home Page at http://localhost:5173/ */}
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<Home />} />
 
       {/* Discover Page at http://localhost:5173/discover */}
       <Route path="/discover" element={<Discover />} />
+
+      {/* Catch-all fallback if route is missing */}
+      <Route path="*" element={<Home />} />
     </Routes>
   );
 }
