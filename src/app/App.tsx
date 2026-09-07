@@ -1,4 +1,19 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "../pages/HomePage"; // Your main home page
+import Discover from "../pages/Discover"; // Your group mate's Discover page
+
+export default function App() {
+  return (
+    <Routes>
+      {/* Home Page at http://localhost:5173/ */}
+      <Route path="/" element={<HomePage />} />
+
+      {/* Discover Page at http://localhost:5173/discover */}
+      <Route path="/discover" element={<Discover />} />
+    </Routes>
+  );
+}
 import {
   Search,
   Star,
